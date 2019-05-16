@@ -4,17 +4,18 @@ using namespace std;
 
 int main() {
 
-	Graph graph(3);
+	Graph graph(20);
 
-	graph.AddEdge(0, 1);
-	graph.AddEdge(0, 2);
-	graph.AddEdge(1, 2);
-	graph.AddEdge(1, 0);
+	for (size_t i = 0; i < 20; i++)
+	{
+		graph.AddEdge(i, (i + 1 < 20) ? i+1 : i );
+
+	}
 
 
-	graph.PrintGraph();
+	graph.BFS(0);
 
-	graph.GetEdge(2, 1);
+	graph.GetEdge(5, 6);
 
 	return 0;
 }
