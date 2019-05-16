@@ -1,7 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -13,11 +14,12 @@ public:
 	Graph(int nodesCount);
 	~Graph() = default;
 
-	void AddEdge(int u, int v);
+	void AddEdge(int source, int dest);
 	void PrintGraph();
+	void GetEdge(int source, int dest);
 private:
 
-	vector<int> * _nodes_v;
+	unordered_set<int> * _nodes_set;
 	int _nodesCount;
 
 };

@@ -4,14 +4,33 @@
 
 Graph::Graph(int nodesCount) : _nodesCount(nodesCount) {
 
-	this->_nodes_v = new vector<int>[nodesCount];
+	this->_nodes_set = new unordered_set<int>[nodesCount];
 
 }
 
-void Graph::AddEdge(int u, int v) {
+void Graph::AddEdge(int source, int dest) {
 
-	this->_nodes_v[u].push_back(v);
-	this->_nodes_v[v].push_back(u);
+	this->_nodes_set[source].insert(dest);
+	this->_nodes_set[dest].insert(source);
+}
+
+void Graph::GetEdge(int source, int dest) {
+
+	cout << "\n";
+
+	unordered_set<int>::iterator it = this->_nodes_set[source].find(dest);
+	if (it != _nodes_set[source].end())
+	{
+		cout << "Found edge: " << source << " -> " << *it;
+	}
+	else
+	{
+		cout << "No such edge: " << dest;
+	}
+
+	cout << "\n";
+
+
 }
 
 void Graph::PrintGraph() {
@@ -21,15 +40,11 @@ void Graph::PrintGraph() {
 	{
 		std::cout << "\n Info for node " << i << " : ";
 
-		for (auto edgeEnd : this->_nodes_v[i])
+		for (auto edgeDest : this->_nodes_set[i])
 		{
-			std::cout << " -> " << edgeEnd;
+			std::cout << " -> " << edgeDest;
 		}
 
-		//for (size_t j = 0; j < this->_nodes_v[i].size(); j++)
-		//{
-		//	std::cout << " -> " << this->_nodes_v[i][j];
-		//}
 	}
 
 
