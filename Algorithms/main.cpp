@@ -2,20 +2,31 @@
 #include "Graph.h"
 using namespace std;
 
+
+
+void ProcessNode(int node) {
+	cout << node << " ";
+}
+
 int main() {
 
-	Graph graph(20);
+	int graphNodesCount = 200;
 
-	for (size_t i = 0; i < 20; i++)
+	Graph graph(graphNodesCount);
+
+	for (size_t i = 0; i < graphNodesCount; i++)
 	{
-		graph.AddEdge(i, (i + 1 < 20) ? i+1 : i );
+		graph.AddEdge(i, (i + 1 < graphNodesCount) ? i+1 : i );
 
 	}
 
 
-	graph.BFS(0);
+	graph.BFS(100, ProcessNode);
 
-	graph.GetEdge(5, 6);
+	cout << endl;
+
+	graph.GetEdge(150, 151);
+	graph.GetEdge(150, 152);
 
 	return 0;
 }

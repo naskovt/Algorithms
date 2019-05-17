@@ -1,31 +1,36 @@
 #include "Graph.h"
+#include <queue>
 
 
 
 Graph::Graph(int nodesCount) : _nodesCount(nodesCount) {
 
-	this->_nodes_set = new unordered_set<int>[nodesCount];
+	this->_nodes_array_sets = new unordered_set<int>[nodesCount];
 
+}
+
+Graph::~Graph()  {
+	delete[] this->_nodes_array_sets;
 }
 
 void Graph::AddEdge(int source, int dest) {
 
-	this->_nodes_set[source].insert(dest);
-	this->_nodes_set[dest].insert(source);
+	this->_nodes_array_sets[source].insert(dest);
+	this->_nodes_array_sets[dest].insert(source);
 }
 
 void Graph::GetEdge(int source, int dest) {
 
 	cout << "\n";
 
-	unordered_set<int>::iterator it = this->_nodes_set[source].find(dest);
-	if (it != _nodes_set[source].end())
+	unordered_set<int>::iterator it = this->_nodes_array_sets[source].find(dest);
+	if (it != _nodes_array_sets[source].end())
 	{
 		cout << "Found edge: " << source << " -> " << *it;
 	}
 	else
 	{
-		cout << "No such edge: " << dest;
+		cout << "No such edge: " << source << " -> " << dest;
 	}
 
 	cout << "\n";
@@ -40,7 +45,7 @@ void Graph::PrintGraph() {
 	{
 		std::cout << "\n Info for node " << i << " : ";
 
-		for (auto edgeDest : this->_nodes_set[i])
+		for (auto edgeDest : this->_nodes_array_sets[i])
 		{
 			std::cout << " -> " << edgeDest;
 		}
@@ -51,42 +56,54 @@ void Graph::PrintGraph() {
 }
 
 
-void Graph::BFS(int s)
-{
-	// Mark all the vertices as not visited 
-	bool* visited = new bool[this->_nodesCount];
+void Graph::BFS(int startingNode, void (*ProcessNode)(int node) ) {
 
+	// create queue
+	queue<int> * nodes_queue = new queue<int>();
+
+	//create visited bool[]
+	bool* visitedArray = new bool[this->_nodesCount];
+	// init array with false
 	for (int i = 0; i < this->_nodesCount; i++)
-		visited[i] = false;
-
-	// Create a queue for BFS 
-	list<int> queue;
-
-	// Mark the current node as visited and enqueue it 
-	visited[s] = true;
-	queue.push_back(s);
-
-	// 'i' will be used to get all adjacent 
-	// vertices of a vertex 
-	unordered_set<int>::iterator it;
-
-	while (!queue.empty())
 	{
-		// Dequeue a vertex from queue and print it 
-		s = queue.front();
-		cout << s << " ";
-		queue.pop_front();
+		visitedArray[i] = false;
+	}
 
-		// Get all adjacent vertices of the dequeued 
-		// vertex s. If a adjacent has not been visited,  
-		// then mark it visited and enqueue it 
-		for (it = this->_nodes_set[s].begin(); it != this->_nodes_set[s].end(); ++it)
+
+	void (*VisitNode)(int node, bool* visitedArray, queue<int> * nodes_queue) =
+					[](int node, bool* visitedArray, queue<int> * nodes_queue)
+	{
+		visitedArray[node] = true;
+		nodes_queue->push(node);
+	};
+
+	//visit starting node
+	VisitNode(startingNode, visitedArray, nodes_queue);
+
+
+	int nodeToProcess = 0;
+	// while queue not empty cycle through nodes
+	while (!nodes_queue->empty())
+	{
+		// get next node from queue to process
+		nodeToProcess = nodes_queue->front();
+
+		ProcessNode(nodeToProcess);
+
+		// remove it after processing
+		nodes_queue->pop();
+
+		for (int adjacentNode : this->_nodes_array_sets[nodeToProcess])
 		{
-			if (!visited[*it])
+			if (!visitedArray[adjacentNode])
 			{
-				visited[*it] = true;
-				queue.push_back(*it);
+				VisitNode(adjacentNode, visitedArray, nodes_queue);
 			}
 		}
 	}
+
+	delete nodes_queue;
+	delete[] visitedArray;
+
+	return;
 }
