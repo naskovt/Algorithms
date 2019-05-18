@@ -21,19 +21,19 @@ void Graph::AddEdge(int source, int dest) {
 
 void Graph::GetEdge(int source, int dest) {
 
-	cout << "\n";
+	//cout << "\n";
 
 	unordered_set<int>::iterator it = this->_nodes_array_sets[source].find(dest);
 	if (it != _nodes_array_sets[source].end())
 	{
-		cout << "Found edge: " << source << " -> " << *it;
+		//cout << "\nFound edge: " << source << " -> " << *it;
 	}
 	else
 	{
-		cout << "No such edge: " << source << " -> " << dest;
+		//cout << "No such edge: " << source << " -> " << dest;
 	}
 
-	cout << "\n";
+	//cout << "\n";
 
 
 }
@@ -56,7 +56,7 @@ void Graph::PrintGraph() {
 }
 
 
-void Graph::BFS(int startingNode, void (*ProcessNode)(int node) ) {
+void Graph::BFS(int startingNode, void (*ProcessNodeFunction)(int node) ) {
 
 	// create queue
 	queue<int> * nodes_queue = new queue<int>();
@@ -88,7 +88,7 @@ void Graph::BFS(int startingNode, void (*ProcessNode)(int node) ) {
 		// get next node from queue to process
 		nodeToProcess = nodes_queue->front();
 
-		ProcessNode(nodeToProcess);
+		ProcessNodeFunction(nodeToProcess);
 
 		// remove it after processing
 		nodes_queue->pop();
@@ -106,4 +106,35 @@ void Graph::BFS(int startingNode, void (*ProcessNode)(int node) ) {
 	delete[] visitedArray;
 
 	return;
+}
+
+
+
+void Graph::DFS_Cycle(int nodeToProcess, bool visitedArray[], void (*ProcessNodeFunction)(int node)) {
+
+	visitedArray[nodeToProcess] = true;
+	ProcessNodeFunction(nodeToProcess);
+
+	for (int adjacentNode : this->_nodes_array_sets[nodeToProcess])
+	{
+		if (!visitedArray[adjacentNode])
+		{
+			this->DFS_Cycle(adjacentNode, visitedArray, ProcessNodeFunction);
+		}
+	}
+
+}
+
+void Graph::DFS(int startIndex, void (*ProcessNodeFunction)(int node) ) {
+
+	//create bool[] visited nodes
+	bool* visitedArray = new bool[this->_nodesCount];
+	// init array with false
+	for (int i = 0; i < this->_nodesCount; i++)
+	{
+		visitedArray[i] = false;
+	}
+
+	this->DFS_Cycle(startIndex, visitedArray, ProcessNodeFunction);
+
 }
