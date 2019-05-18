@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
-#include "Graph.h"
 #include <stdlib.h>
 #include <time.h> 
 #include <thread> 
 
+#include "Graph.h"
 #include "StopWatch.h"
 
 

@@ -125,10 +125,14 @@
   <ItemGroup>
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SortingAlgorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Graph_Examples.h" />
+    <ClInclude Include="MergeSort.h" />
+    <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="SortingAlgorithm.h" />
     <ClInclude Include="Sorting_Examples.h" />
     <ClInclude Include="StopWatch.h" />
   </ItemGroup>
