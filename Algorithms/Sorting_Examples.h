@@ -29,25 +29,26 @@ void SortingTest(SortingAlgorithm * sortingAlgorithm, int numbersToSort) {
 	stopwatch.Start();
 
 	sortingAlgorithm->Sort(arr, ARR_SIZE);
-	//QuickSort quicksort_(arr, ARR_SIZE);
-	//MergeSort mergesort_(arr, ARR_SIZE);
-
+ 
 	stopwatch.Stop();
 
 	sortingAlgorithm->PrintName();
 
-	// visualize first N numbers 
-	for (int i = 0; i < 10; i++)
+	if (ARR_SIZE > 5)
 	{
-		cout << " " << arr[i];
-	}
+		// visualize first N numbers 
+		for (int i = 0; i < 5; i++)
+		{
+			cout << " " << arr[i];
+		}
 
-	cout << " ...";
+		cout << " ...";
 
-	// visualize last N numbers 
-	for (int i = ARR_SIZE - 5; i < ARR_SIZE; i++)
-	{
-		cout << " " << arr[i];
+		// visualize last N numbers 
+		for (int i = ARR_SIZE - 5; i < ARR_SIZE; i++)
+		{
+			cout << " " << arr[i];
+		}
 	}
 
 	std::cout << endl << "\nElapsed time: " << stopwatch.ElapsedMilliseconds() << " ms\n";
