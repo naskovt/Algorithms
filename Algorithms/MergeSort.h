@@ -25,6 +25,10 @@ public:
 
 	}
 
+	void PrintName() override {
+		SortingAlgorithm::PrintName_Concatenated("MergeSort");
+	}
+
 	~MergeSort() {
 		delete[] L;
 		delete[] R;

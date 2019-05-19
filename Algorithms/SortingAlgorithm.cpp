@@ -9,6 +9,11 @@ void SortingAlgorithm::Sort(int arr[], int size) {
 	this->_size = size;
 }
 
+void SortingAlgorithm::PrintName_Concatenated(std::string algorithmName)
+{
+	std::cout << "\n Algorithm - " << algorithmName << " executing:" << std::endl;
+}
+
 SortingAlgorithm::~SortingAlgorithm()
 {
 }

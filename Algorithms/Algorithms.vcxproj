@@ -128,6 +128,7 @@
     <ClCompile Include="SortingAlgorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Graph_Examples.h" />
     <ClInclude Include="MergeSort.h" />

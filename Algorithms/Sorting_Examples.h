@@ -10,16 +10,16 @@
 
 using namespace std;
 
-void SortingTest(SortingAlgorithm * sortingAlgorithm) {
+void SortingTest(SortingAlgorithm * sortingAlgorithm, int numbersToSort) {
 
-	int ARR_SIZE = 2000;
+	int ARR_SIZE = numbersToSort;
 
 	int* arr = new int[ARR_SIZE];
 
 	for (int i = 0; i < ARR_SIZE; i++)
 	{
-		arr[i] = ARR_SIZE - i;
-		//arr[i] = rand() % ARR_SIZE;
+		//arr[i] = ARR_SIZE - i;
+		arr[i] = rand() % ARR_SIZE;
 	}
 
 	srand(time(NULL));
@@ -34,8 +34,18 @@ void SortingTest(SortingAlgorithm * sortingAlgorithm) {
 
 	stopwatch.Stop();
 
+	sortingAlgorithm->PrintName();
 
-	for (int i = 0; i < 200; i++)
+	// visualize first N numbers 
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " " << arr[i];
+	}
+
+	cout << " ...";
+
+	// visualize last N numbers 
+	for (int i = ARR_SIZE - 5; i < ARR_SIZE; i++)
 	{
 		cout << " " << arr[i];
 	}

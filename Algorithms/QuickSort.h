@@ -21,6 +21,11 @@ public:
 		QuickSort_cycle(0, _size - 1);
 	}
 
+
+	void PrintName() override {
+		SortingAlgorithm::PrintName_Concatenated("QuickSort");
+	}
+
 	~QuickSort() = default;
 
 private:
