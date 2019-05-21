@@ -131,6 +131,7 @@
     <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Graph_Examples.h" />
+    <ClInclude Include="HeapSort.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="SelectionSort.h" />

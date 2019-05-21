@@ -18,8 +18,8 @@ void SortingTest(SortingAlgorithm * sortingAlgorithm, int numbersToSort) {
 
 	for (int i = 0; i < ARR_SIZE; i++)
 	{
-		//arr[i] = ARR_SIZE - i;
-		arr[i] = rand() % ARR_SIZE;
+		arr[i] = ARR_SIZE - i;
+		//arr[i] = rand() % ARR_SIZE;
 	}
 
 	srand(time(NULL));
@@ -51,7 +51,7 @@ void SortingTest(SortingAlgorithm * sortingAlgorithm, int numbersToSort) {
 		}
 	}
 
-	std::cout << endl << "\nElapsed time: " << stopwatch.ElapsedMilliseconds() << " ms\n";
+	std::cout << endl << "\nElapsed time ============================= " << stopwatch.ElapsedMilliseconds() << " ms\n";
 	
 	delete[] arr;
 }
