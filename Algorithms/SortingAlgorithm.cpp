@@ -1,3 +1,5 @@
+#pragma once
+
 #include "SortingAlgorithm.h"
 
 SortingAlgorithm::SortingAlgorithm(int arr[], int size) : _arr(arr), _size(size)

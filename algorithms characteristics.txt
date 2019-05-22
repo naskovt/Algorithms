@@ -1,0 +1,7 @@
+heap sort - worst- 0(nlogn, average O(nlogn, space o(n)
+
+
+selection sort - O(n^2) , very slow in larger arrays, less than 100 nums, 		second place after insertion sort, on 50 nums and less
+
+InsertionSort - worst - O(n^2), best O(n), avg - O(n^2), best in less numbers > 100
+

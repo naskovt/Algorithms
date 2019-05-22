@@ -56,5 +56,11 @@
     <ClInclude Include="HeapSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InsertionSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchingAlgorithms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

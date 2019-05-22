@@ -7,8 +7,11 @@
 #include "MergeSort.h"
 #include "StopWatch.h"
 #include "SortingAlgorithm.h"
+#include "SearchingAlgorithms.h"
+
 
 using namespace std;
+
 
 void SortingTest(SortingAlgorithm * sortingAlgorithm, int numbersToSort) {
 
@@ -51,7 +54,26 @@ void SortingTest(SortingAlgorithm * sortingAlgorithm, int numbersToSort) {
 		}
 	}
 
-	std::cout << endl << "\nElapsed time ============================= " << stopwatch.ElapsedMilliseconds() << " ms\n";
+	std::cout << "\nSorting Elapsed time ============================= " << stopwatch.ElapsedMilliseconds() << " ms\n";
+	std::cout << endl;
+
+
+	////////////////// SEARCHING ALGORITHMS
+	srand(time(NULL));
+	stopwatch.Reset();
+	stopwatch.Start();
+
+	int serachFor = 1;
+	//int searchResult = linearSearch(arr, ARR_SIZE, serachFor);
+	//int searchResult = binarySearch(arr, 0, ARR_SIZE - 1, serachFor);
+	int searchResult = interpolationSearch(arr, ARR_SIZE, serachFor);
 	
+	stopwatch.Stop();
+	std::cout << "\nSearching for: " << serachFor << "------Found in Index => " << searchResult;
+	std::cout << "------Elapsed time: " << stopwatch.ElapsedMilliseconds() << " ms\n";
+	std::cout << endl;
+
+
 	delete[] arr;
-}
+
+};

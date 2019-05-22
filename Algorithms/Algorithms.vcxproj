@@ -132,8 +132,10 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Graph_Examples.h" />
     <ClInclude Include="HeapSort.h" />
+    <ClInclude Include="InsertionSort.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="SearchingAlgorithms.h" />
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortingAlgorithm.h" />
     <ClInclude Include="Sorting_Examples.h" />
